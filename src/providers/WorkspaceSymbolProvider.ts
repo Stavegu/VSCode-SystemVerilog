@@ -77,7 +77,7 @@ export class SystemVerilogWorkspaceSymbolProvider implements WorkspaceSymbolProv
         return new Promise((resolve) => {
             let modules: Array<SystemVerilogSymbol> = [];
             this.indexer.symbols.forEach((list) => {
-                const foundModules = list.filter((symbol) => symbol.kind === getSymbolKind('module'));
+                const foundModules = list.filter((symbol) => (symbol.kind === getSymbolKind('module') || symbol.kind === getSymbolKind('interface')));
                 modules = modules.concat(foundModules);
             });
             resolve(modules);
